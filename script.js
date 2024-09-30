@@ -1,11 +1,11 @@
 // Basic setup for Three.js scene
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 // Create the WebGL renderer and set the pixel ratio for better quality
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setPixelRatio(window.devicePixelRatio); // Set pixel ratio for better clarity
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio*2); // Set pixel ratio for better clarity
+renderer.setSize(window.innerWidth, window.innerHeight );
 document.body.appendChild(renderer.domElement);
 
 // Add directional light
@@ -40,7 +40,7 @@ d3.csv('MatrixForIPFforVis.csv').then(function(data) {
     const numRows = data.length; // Number of rows (AIV-Reps)
     const numCols = Object.keys(data[0]).length; // Number of columns (AIV-SubMecs)
     const gridSize = Math.max(numRows, numCols);
-    const barSpacing = 1.5; // Spacing between the bars
+    const barSpacing = 1.2; // Spacing between the bars
 
     // Create a white base plane
     const baseGeometry = new THREE.PlaneGeometry(numCols * barSpacing, numRows * barSpacing);
@@ -79,7 +79,7 @@ d3.csv('MatrixForIPFforVis.csv').then(function(data) {
     });
 
     // Set initial camera position
-    camera.position.set(115, 45, 55); // Adjust Z position
+    camera.position.set(85, 45, 75); // Adjust Z position
     controls.update();
 
     // Animation loop
